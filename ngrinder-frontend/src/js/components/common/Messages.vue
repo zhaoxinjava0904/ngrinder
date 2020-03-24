@@ -67,8 +67,11 @@
             this.showMsg('alert-info', msg);
         }
 
-        showErrorMsg(msg) {
+        showErrorMsg(msg, err) {
             msg = msg || '';
+            if (err) {
+                console.err(err);
+            }
             this.showErrMsgDiv = false;
             this.errMessage = msg;
             this.showErrMsgDiv = true;
