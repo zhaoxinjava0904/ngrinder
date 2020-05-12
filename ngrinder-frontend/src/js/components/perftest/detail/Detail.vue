@@ -130,6 +130,7 @@
                 runCount: test.config.runCount,
                 samplingInterval: test.config.samplingInterval,
                 ignoreSampleCount: test.config.ignoreSampleCount,
+                ignoreTooManyError: test.config.ignoreTooManyError,
                 safeDistribution: test.config.safeDistribution,
                 param: test.config.param,
 
@@ -167,6 +168,7 @@
                     runCount: test.runCount,
                     samplingInterval: test.samplingInterval,
                     ignoreSampleCount: test.ignoreSampleCount,
+                    ignoreTooManyError: test.ignoreTooManyError,
                     safeDistribution: test.safeDistribution,
                     param: test.param,
                 },
