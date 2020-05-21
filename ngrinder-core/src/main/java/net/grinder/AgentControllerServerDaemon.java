@@ -1,4 +1,4 @@
-/* 
+/*
  * Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -9,10 +9,11 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License. 
+ * limitations under the License.
  */
 package net.grinder;
 
+import lombok.Getter;
 import net.grinder.common.GrinderException;
 import net.grinder.common.GrinderProperties;
 import net.grinder.common.processidentity.AgentIdentity;
@@ -34,6 +35,7 @@ import org.ngrinder.monitor.controller.model.SystemDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.Socket;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -47,6 +49,7 @@ import static org.ngrinder.common.util.ExceptionUtils.processException;
 public class AgentControllerServerDaemon {
 	private final ConsoleProperties consoleProperties;
 	private Thread thread;
+	@Getter
 	private AgentControllerServer agentControllerServer;
 	public static final Resources RESOURCES = new ResourcesImplementation(
 			"net.grinder.console.common.resources.Console");
@@ -272,6 +275,10 @@ public class AgentControllerServerDaemon {
 	public void updateAgent(AgentIdentity agentIdentity, String version) {
 		getComponent(ConsoleCommunication.class).sendToAddressedAgents(new AgentAddress(agentIdentity),
 				AgentUpdateGrinderMessage.getStartAgentUpdateGrinderMessage(version));
+	}
+
+	public void discriminateConnection(Socket socket) {
+		getComponent(ConsoleCommunicationImplementationEx.class).discriminateConnection(socket);
 	}
 
 	/**

@@ -63,7 +63,6 @@ import static org.ngrinder.common.constant.CacheConstants.*;
 import static org.ngrinder.common.constant.ControllerConstants.PROP_CONTROLLER_ENABLE_AGENT_AUTO_APPROVAL;
 import static org.ngrinder.common.util.CollectionUtils.newHashMap;
 import static org.ngrinder.common.util.TypeConvertUtils.cast;
-import static org.ngrinder.infra.config.Config.NONE_REGION;
 
 /**
  * Agent manager service.
@@ -374,6 +373,10 @@ public class AgentService extends AbstractAgentService implements TopicListener<
 	 */
 	public void updateAgent(AgentIdentity agentIdentity) {
 		agentManager.updateAgent(agentIdentity, agentManager.getAgentForceUpdate() ? "99.99" : config.getVersion());
+	}
+
+	public void addExternalAgent(String ip, int port) {
+		agentManager.addExternalAgent(ip, port);
 	}
 
 
