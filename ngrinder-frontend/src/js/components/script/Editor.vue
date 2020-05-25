@@ -57,7 +57,7 @@
                          data-placement="bottom">
                         <button class="btn btn-info float-right add-host-btn" @click.prevent="$refs.addHostModal.show">
                             <i class="fa fa-plus"></i>
-                            <span v-text="i18n('perfTest.config.add')"></span>
+                            <span v-text="i18n('common.button.add')"></span>
                         </button>
                         <div v-for="(host, index) in targetHosts" class="host">
                             <a href="#" @click="showTargetHostInfoModal(host)" v-text="host"></a>
