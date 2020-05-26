@@ -103,7 +103,7 @@
             :css="table.css.pagination"
             @vuetable-pagination:change-page="changePage">
         </vuetable-pagination>
-        <add-external-agent-modal ref="addExternalAgentModal"/>
+        <add-external-agent-modal ref="addExternalAgentModal" :regions="regions"/>
     </div>
 </template>
 
